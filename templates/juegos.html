@@ -1,0 +1,41 @@
+{% extends "maestra.html" %}
+{% block titulo %} Juegos {% endblock %}
+{% block contenido %}
+<!--Por: Heriberto Buenrostro Hernandez-->
+<section class="section">
+    <div class="columns">
+        <div class="column">
+            <h3 class="is-size-3">Juegos</h3>
+            <a href="/guardar_juego" class="button is-success">Agregar</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Precio</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for juego in juegos %}
+                    <tr>
+                    <td>{{ juego.id }}</td>
+                    <td>{{ juego.nombre }}</td>
+                    <td>{{ juego.descripcion }}</td>
+                    <td>${{ juego.precio }}</td>
+                        <td>
+                            <a href="/editar/{{ juego.id }}" class="button is-info">Editar</a>
+                        </td>
+                        <td>
+                            <a href="/eliminar/{{ juego.id }}" class="button is-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}
